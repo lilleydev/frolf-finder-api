@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  difficulty: 1
+  mixed_use_park: false
+
+two:
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  difficulty: 1
+  mixed_use_park: false
