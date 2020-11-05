@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   def destroy
     @course.destroy
+    render json: @course 
   end
 
   private
