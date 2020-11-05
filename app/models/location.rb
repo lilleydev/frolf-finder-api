@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
-  has_many :residents, foreign_key: :hometown_id, class_name: "User"
-  has_many :courses
+  has_many :courses, through: :bucket_lists
+  belongs_to :bucket_list
 end
