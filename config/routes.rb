@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :bucket_lists
-  resources :comments
   # namespace to site thediscgolfproject.com/api/v1/resource
   
   namespace :api do
     namespace :v1 do 
       resources :courses
       resources :locations
+      resources :bucket_lists
+      resources :comments
       resources :users
     end 
   end 
