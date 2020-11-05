@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   # namespace to site thediscgolfproject.com/api/v1/resource
   
   namespace :api do

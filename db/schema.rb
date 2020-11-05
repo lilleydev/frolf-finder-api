@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_203705) do
+ActiveRecord::Schema.define(version: 2020_11_05_221326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "bucket_lists_id", null: false
+    t.bigint "courses_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bucket_lists_id"], name: "index_activities_on_bucket_lists_id"
+    t.index ["courses_id"], name: "index_activities_on_courses_id"
+  end
 
   create_table "bucket_lists", force: :cascade do |t|
     t.string "items"
@@ -61,5 +70,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_203705) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "activities", "bucket_lists", column: "bucket_lists_id"
+  add_foreign_key "activities", "courses", column: "courses_id"
   add_foreign_key "bucket_lists", "users"
 end
