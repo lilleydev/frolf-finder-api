@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # namespace to site thediscgolfproject.com/api/v1/resource
 
   namespace :api do
-    namespace :vi do 
+    namespace :v1 do 
       resources :courses
     end 
   end 
