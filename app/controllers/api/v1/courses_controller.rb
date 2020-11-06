@@ -3,9 +3,9 @@ class Api::V1::CoursesController < ApplicationController
 
   # GET /courses
   def index
-    @courses = Course.all
-
-    render json: @courses
+    courses = Course.all
+    courses_json = CourseSerializer.new(courses).serialized_json 
+    render json: courses_json
   end
 
   # GET /courses/1
