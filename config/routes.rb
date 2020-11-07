@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # namespace to site thediscgolfproject.com/api/v1/resource
-  get '/api/v1/login', to: "api/v1/sessions#create"
+  post '/api/v1/login', to: "api/v1/sessions#create"
   namespace :api do
     namespace :v1 do 
       resources :courses
