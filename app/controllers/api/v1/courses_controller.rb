@@ -1,11 +1,18 @@
 class Api::V1::CoursesController < ApplicationController
   before_action :set_course, only: [:show, :update, :destroy]
 
+  
   # GET /courses
   def index
-    courses = Course.all
-    courses_json = CourseSerializer.new(courses).serialized_json 
-    render json: courses_json
+    # if logged_in?
+      courses = Course.all
+      courses_json = CourseSerializer.new(courses).serialized_json 
+      render json: courses_json
+    # else 
+    #   render json: {
+    #   error: "You must be logged in"
+    #   }
+    # end 
   end
 
   # GET /courses/1
