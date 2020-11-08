@@ -1,8 +1,8 @@
 class Api::V1::BucketListsController < ApplicationController
   def index
     # if logged_in?
-      bucket_lists = bucket_list.all
-      bucket_lists_json = bucket_listserializer.new(bucket_lists).serialized_json 
+      bucket_lists = BucketList.all
+      bucket_lists_json = BucketListSerializer.new(bucket_lists)
       render json: bucket_lists_json
     # else 
     #   render json: {
@@ -18,7 +18,7 @@ class Api::V1::BucketListsController < ApplicationController
 
   # POST /bucket_lists
   def create
-    @bucket_list = bucket_list.new(bucket_list_params)
+    @bucket_list = BucketList.new(bucket_list_params)
 
     if @bucket_list.save
       render json: @bucket_list, status: :created, location: @bucket_list
@@ -45,7 +45,7 @@ class Api::V1::BucketListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bucket_list
-      @bucket_list = bucket_list.find(params[:id])
+      @bucket_list = BucketList.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
