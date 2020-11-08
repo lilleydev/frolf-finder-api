@@ -1,14 +1,13 @@
 class Api::V1::BucketListsController < ApplicationController
   def index
-    # if logged_in?
-      bucket_lists = BucketList.all
-      bucket_lists_json = BucketListSerializer.new(bucket_lists)
-      render json: bucket_lists_json
-    # else 
-    #   render json: {
-    #   error: "You must be logged in"
-    #   }
-    # end 
+    if logged_in?
+      @bucket_lists = current_user.bucket_lists
+      render json: BucketlistSerializer.new(@bucket_lists)
+    else 
+      render json: {
+      error: "You must be logged in"
+      }
+    end 
   end
 
   # GET /bucket_lists/1
