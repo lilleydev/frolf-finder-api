@@ -1,5 +1,5 @@
-class BucketlistSerializer
+class BucketListSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :items, :location_id
+  attributes :name, :items, :location_id, :courses
   # has_many :courses, serializer: CourseSerializer
 end
