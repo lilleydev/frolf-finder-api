@@ -2,7 +2,7 @@ class Api::V1::BucketListsController < ApplicationController
   def index
     if logged_in?
       @bucket_lists = current_user.bucket_lists
-      render json: BucketlistSerializer.new(@bucket_lists)
+      render json: BucketListSerializer.new(@bucket_lists)
     else 
       render json: {
       error: "You must be logged in"
@@ -51,5 +51,5 @@ class Api::V1::BucketListsController < ApplicationController
     def bucket_list_params
       params.require(:bucket_list).permit(:name, :street, :city, :state, :difficulty, :mixed_use_park)
     end
-end
+
 end
