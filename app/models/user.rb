@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :bucket_lists
 
   validates :name, :username, :password
+  validates :username, uniqueness: true
 end
