@@ -5,6 +5,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
     # binding.pry
     if @user.save
+      session[:user_id] = @user.id
       render json: UserSerializer.new(@user)
     else
       render json: @user.errors, status: :unprocessable_entity
