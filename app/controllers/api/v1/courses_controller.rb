@@ -43,7 +43,7 @@ class Api::V1::CoursesController < ApplicationController
   # DELETE /courses/1
   def destroy
     @course.destroy
-    render json: @course 
+    render json: CourseSerializer.new(@course) 
   end
 
   private
