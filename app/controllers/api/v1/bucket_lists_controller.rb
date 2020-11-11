@@ -1,6 +1,7 @@
 class Api::V1::BucketListsController < ApplicationController
   def index
     if logged_in?
+      # binding.pry
       @bucket_lists = current_user.bucket_lists
       render json: BucketListSerializer.new(@bucket_lists)
     else 
@@ -17,6 +18,7 @@ class Api::V1::BucketListsController < ApplicationController
 
   # POST /bucket_lists
   def create
+    binding.pry
     @bucket_list = BucketList.new(bucket_list_params)
 
     if @bucket_list.save
@@ -38,7 +40,7 @@ class Api::V1::BucketListsController < ApplicationController
   # DELETE /bucket_lists/1
   def destroy
     @bucket_list.destroy
-    render json: @bucket_list 
+    render json: CourseSerializer.new(@bucket_list) 
   end
 
   private
