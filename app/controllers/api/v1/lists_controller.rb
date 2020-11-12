@@ -51,7 +51,7 @@ class Api::V1::ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:name, :items)
+      params.require(:list).permit(:name, :description, :start_date, :end_date)
     end
 
 end

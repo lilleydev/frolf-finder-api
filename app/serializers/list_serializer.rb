@@ -1,5 +1,5 @@
 class ListSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :items, :location_id, :courses
+  attributes :name, :description, :start_date, :end_date, :location_id, :courses
   # has_many :courses, serializer: CourseSerializer
 end
