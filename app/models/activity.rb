@@ -1,4 +1,4 @@
 class Activity < ApplicationRecord
-  belongs_to :bucket_list
+  belongs_to :list
   belongs_to :course
 end

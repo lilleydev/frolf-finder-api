@@ -1,4 +1,4 @@
-class BucketList < ApplicationRecord
+class List < ApplicationRecord
   belongs_to :user
   has_many :activities
   has_many :courses, through: :activities

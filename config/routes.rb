@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :courses
       resources :locations
-      resources :bucket_lists
+      resources :lists
       resources :comments
       resources :users
       resources :activities
