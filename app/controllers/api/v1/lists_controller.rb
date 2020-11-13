@@ -18,9 +18,10 @@ class Api::V1::ListsController < ApplicationController
 
   # POST /lists
   def create
-    binding.pry
-    @list = List.new(list_params)
-
+    # binding.pry
+    @list = current_user.lists.build(list_params)
+    loc = Location.first 
+    loc.lists << @list 
     if @list.save
       render json: @list, status: :created, location: @list
     else
