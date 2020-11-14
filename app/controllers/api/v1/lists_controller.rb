@@ -23,9 +23,12 @@ class Api::V1::ListsController < ApplicationController
     loc = Location.first 
     loc.lists << @list 
     if @list.save
-      render json: @list, status: :created, location: @list
+      render json: ListSerializer.new(@list), status: :created
     else
-      render json: @list.errors, status: :unprocessable_entity
+      error_resp = {
+        error: @list.errors.full_messages.to_sentence
+      }
+      render json: error_resp, status: :unprocessable_entity
     end
   end
 
