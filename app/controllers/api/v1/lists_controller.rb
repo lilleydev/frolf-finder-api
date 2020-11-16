@@ -1,4 +1,6 @@
 class Api::V1::ListsController < ApplicationController
+  before_action :set_list, only: [:show, :update, :destroy]  
+
   def index
     if logged_in?
       # binding.pry
@@ -20,8 +22,6 @@ class Api::V1::ListsController < ApplicationController
   def create
     # binding.pry
     @list = current_user.lists.build(list_params)
-    loc = Location.first 
-    loc.lists << @list 
     if @list.save
       render json: ListSerializer.new(@list), status: :created
     else
@@ -58,4 +58,5 @@ class Api::V1::ListsController < ApplicationController
       params.require(:list).permit(:name, :description, :start_date, :end_date)
     end
 
+    
 end
