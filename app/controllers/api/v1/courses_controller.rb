@@ -5,9 +5,9 @@ class Api::V1::CoursesController < ApplicationController
   # GET /courses
   def index
     # if logged_in?
-      courses = Course.all
-      courses_json = CourseSerializer.new(courses).serialized_json 
-      render json: courses_json
+    # binding.pry
+      @courses = Course.all
+      render json: CourseSerializer.new(@courses)
     # else 
     #   render json: {
     #   error: "You must be logged in"
