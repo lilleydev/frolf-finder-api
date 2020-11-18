@@ -35,9 +35,12 @@ class Api::V1::ListsController < ApplicationController
   # PATCH/PUT /lists/1
   def update
     if @list.update(list_params)
-      render json: @list
+      render json: ListSerializer.new(@list), status: :ok
     else
-      render json: @list.errors, status: :unprocessable_entity
+      error_resp = {
+        error: @list.errors.full_messages.to_sentence
+      }
+      render json: error_resp, status: :unprocessable_entity
     end
   end
 
